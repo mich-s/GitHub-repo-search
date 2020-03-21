@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.michs.github_repo_search.databinding.FragmentReposBinding
 
 class RepoDetailsFragment: Fragment(){
 
@@ -14,6 +15,11 @@ class RepoDetailsFragment: Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+
+        val binding = FragmentReposBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = viewLifecycleOwner
+        
+
+        return binding.root
     }
 }
