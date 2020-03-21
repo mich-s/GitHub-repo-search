@@ -11,5 +11,5 @@ data class RepositoryNet(
     @Json(name = "html_url") val htmlUrl: String,
     @Json(name = "created_at") val createdAt: String,
     @Json(name = "updated_at") val updatedAt: String,
-    val language: String
+    val language: String?
 )

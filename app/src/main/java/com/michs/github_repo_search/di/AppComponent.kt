@@ -1,6 +1,7 @@
 package com.michs.github_repo_search.di
 
 import android.content.Context
+import com.michs.github_repo_search.MainActivity
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -14,5 +15,5 @@ interface AppComponent {
         fun create(@BindsInstance context: Context): AppComponent
     }
 
-
+    fun inject(mainActivity: MainActivity)
 }
