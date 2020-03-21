@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.michs.github_repo_search.App
+import com.michs.github_repo_search.MainActivity
 import com.michs.github_repo_search.databinding.FragmentReposBinding
 import com.michs.github_repo_search.network.Result
 import com.michs.github_repo_search.repository.GitHubReposRepository
@@ -35,6 +36,8 @@ class ReposFragment: Fragment(){
     ): View? {
         val binding = FragmentReposBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
+
+        (activity as MainActivity).setSupportActionBar(binding.toolbar)
 
 
         viewModel.repos.observe(this, Observer { result ->
