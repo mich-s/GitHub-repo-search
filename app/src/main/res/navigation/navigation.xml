@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/reposFragment">
+    <fragment
+        android:id="@+id/reposFragment"
+        android:name="com.michs.github_repo_search.repos.ReposFragment"
+        android:label="ReposFragment" />
+    <fragment
+        android:id="@+id/repoDetailsFragment"
+        android:name="com.michs.github_repo_search.repoDetails.RepoDetailsFragment"
+        android:label="RepoDetailsFragment" />
+</navigation>
