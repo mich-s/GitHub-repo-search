@@ -1,5 +1,6 @@
 package com.michs.github_repo_search.network.dto
 
+import com.michs.github_repo_search.domain.Repository
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -13,3 +14,14 @@ data class RepositoryNet(
     @Json(name = "updated_at") val updatedAt: String,
     val language: String?
 )
+
+fun RepositoryNet.asDomainObject(): Repository =
+    Repository(
+        name = name,
+        fullName = fullName,
+        owner = owner.asDomainObject(),
+        htmlUrl = htmlUrl,
+        createdAt = createdAt,
+        updatedAt = updatedAt,
+        language = language
+    )
