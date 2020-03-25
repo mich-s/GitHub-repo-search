@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class RemoteDataSource @Inject constructor(private val repoService: RepoService){
 
-    suspend fun getRepos() = getResult { repoService.searchRepositories("android") }
+    suspend fun getRepos(query: String?) = getResult { repoService.searchRepositories(query) }
 
     private suspend fun <T> getResult(call: suspend () -> Response<T>): Result<T> {
         try {

@@ -1,19 +1,30 @@
 package com.michs.github_repo_search.repository
 
-import androidx.lifecycle.liveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.michs.github_repo_search.network.RemoteDataSource
-import kotlinx.coroutines.Dispatchers
+import com.michs.github_repo_search.network.Result
+import com.michs.github_repo_search.network.ResultsResponse
+import com.michs.github_repo_search.network.dto.RepositoryNet
+import com.michs.github_repo_search.utils.notifyObserver
+import kotlinx.coroutines.*
 import javax.inject.Inject
 import javax.inject.Singleton
-
 
 @Singleton
 class GitHubReposRepository @Inject constructor(private val remoteDataSource: RemoteDataSource) {
 
-    val repos = liveData(Dispatchers.IO) {
-        val data = remoteDataSource.getRepos()
-        emit(data)
+    private val job = Job()
+    private val scope = CoroutineScope(job + Dispatchers.IO)
+
+    val repositories: LiveData<Result<ResultsResponse<RepositoryNet>>>
+        get() = _repositories
+    private val _repositories = MutableLiveData<Result<ResultsResponse<RepositoryNet>>>()
+
+    fun searchRepositories(searchText: String) {
+        scope.launch {
+            val repos = remoteDataSource.getRepos(searchText)
+            _repositories.notifyObserver(repos)
+        }
     }
-
-
 }

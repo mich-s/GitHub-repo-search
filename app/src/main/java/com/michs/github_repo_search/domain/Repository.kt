@@ -7,5 +7,9 @@ data class Repository(
     val htmlUrl: String,
     val createdAt: String,
     val updatedAt: String,
-    val language: String?
+    val language: String?,
+    val description: String?,
+    val stargazersCount: Int?,
+    val forksCount: Int?,
+    val watchersCount: Int?
 )

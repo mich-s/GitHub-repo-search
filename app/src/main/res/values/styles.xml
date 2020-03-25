@@ -11,7 +11,10 @@
 
     <style name="ExpandedAppBar" parent="TextAppearance.Design.CollapsingToolbar.Expanded">
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">22sp</item>
+        <item name="android:textSize">26sp</item>
     </style>
-    
+
+    <style name="divider_line">
+        <item name="android:background">@android:color/darker_gray</item>
+    </style>
 </resources>
