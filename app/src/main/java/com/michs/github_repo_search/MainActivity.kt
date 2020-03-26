@@ -6,6 +6,7 @@ import android.text.TextWatcher
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     private val listener = NavController.OnDestinationChangedListener {
             navController, _, _ ->
         toolbar.setCollapsible(navController.currentDestination?.id == R.id.reposFragment)
+        binding.appBarLayout.setExpanded(navController.currentDestination?.id == R.id.reposFragment)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         (application as App).appComponent.inject(this)

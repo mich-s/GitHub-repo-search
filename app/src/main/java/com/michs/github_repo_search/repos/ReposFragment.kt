@@ -2,8 +2,6 @@ package com.michs.github_repo_search.repos
 
 import android.content.Context
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,17 +12,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.appbar.AppBarLayout
+import androidx.recyclerview.widget.RecyclerView
 import com.michs.github_repo_search.App
-import com.michs.github_repo_search.MainActivity
-import com.michs.github_repo_search.R
 import com.michs.github_repo_search.databinding.FragmentReposBinding
 import com.michs.github_repo_search.network.Result
 import com.michs.github_repo_search.network.dto.asDomainModel
 import com.michs.github_repo_search.repository.GitHubReposRepository
-import com.michs.github_repo_search.utils.hideSoftKeyboard
-import kotlinx.android.synthetic.main.fragment_repos.*
-import kotlinx.coroutines.*
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -33,6 +26,7 @@ class ReposFragment: Fragment(){
     @Inject
     lateinit var repository: GitHubReposRepository
     private val viewModel: ReposViewModel by viewModels {ReposViewModelFactory(repository) }
+    private lateinit var rv: RecyclerView
 
     override fun onAttach(context: Context) {
         (activity!!.application as App).appComponent.inject(this)
@@ -53,8 +47,9 @@ class ReposFragment: Fragment(){
         })
 
 
+        rv = binding.recyclerView
 
-        binding.recyclerView.apply{
+        rv.apply{
             layoutManager = LinearLayoutManager(context)
             this.adapter = adapter
         }

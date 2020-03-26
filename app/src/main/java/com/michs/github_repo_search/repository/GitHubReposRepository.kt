@@ -2,6 +2,8 @@ package com.michs.github_repo_search.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.liveData
+import com.michs.github_repo_search.domain.Repository
 import com.michs.github_repo_search.network.RemoteDataSource
 import com.michs.github_repo_search.network.Result
 import com.michs.github_repo_search.network.ResultsResponse
@@ -27,4 +29,11 @@ class GitHubReposRepository @Inject constructor(private val remoteDataSource: Re
             _repositories.notifyObserver(repos)
         }
     }
+
+    fun fetchRepositoryDetails(owner: String, repo: String): LiveData<Result<RepositoryNet>> =
+        liveData(Dispatchers.IO){
+            val repository = remoteDataSource.getRepoDetail(owner, repo)
+            emit(repository)
+        }
+
 }

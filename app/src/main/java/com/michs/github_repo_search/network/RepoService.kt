@@ -15,6 +15,6 @@ interface RepoService {
     @GET("search/repositories")
     suspend fun searchRepositories(@Query("q") query: String? = null): Response<ResultsResponse<RepositoryNet>>
 
-    @GET("{owner}/{repo}")
+    @GET("repos/{owner}/{repo}")
     suspend fun getRepositoryInfo(@Path("owner") owner: String, @Path("repo") repo: String): Response<RepositoryNet>
 }

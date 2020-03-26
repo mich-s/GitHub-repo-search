@@ -14,7 +14,7 @@
             android:clipToPadding="false"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:fillViewport="true">
-            <FrameLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -29,7 +29,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="vertical" />
-            </FrameLayout>
+                <!--<com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/scroll_to_top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="16dp"
+                    app:backgroundTint="@color/colorPrimary"
+                    app:fabSize="normal"
+                    app:rippleColor="@android:color/white"
+                    android:tint="@android:color/white"
+                    android:src="@drawable/ic_upward"
+                    />-->
+            </RelativeLayout>
         </androidx.core.widget.NestedScrollView>
     </FrameLayout>
 </layout>

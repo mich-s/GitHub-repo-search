@@ -8,6 +8,8 @@ class RemoteDataSource @Inject constructor(private val repoService: RepoService)
 
     suspend fun getRepos(query: String?) = getResult { repoService.searchRepositories(query) }
 
+    suspend fun getRepoDetail(owner: String, repo: String) = getResult { repoService.getRepositoryInfo(owner, repo) }
+
     private suspend fun <T> getResult(call: suspend () -> Response<T>): Result<T> {
         try {
             val response = call.invoke()
