@@ -6,6 +6,9 @@
         <variable
             name="repository"
             type="com.michs.github_repo_search.domain.Repository" />
+        <variable
+            name="repoClick"
+            type="com.michs.github_repo_search.repos.RepoClick" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -106,7 +109,7 @@
             app:layout_constraintBottom_toBottomOf="@id/forks_count"
             android:layout_width="@dimen/icon_size"
             android:layout_height="18dp"
-            android:src="@drawable/ic_watchers"
+            android:src="@drawable/ic_branch"
             android:layout_marginStart="15dp"
             android:foregroundGravity="bottom"/>
         <TextView
@@ -129,6 +132,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:onClick="@{() -> repoClick.onItemClick(repository)}"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

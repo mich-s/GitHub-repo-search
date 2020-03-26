@@ -7,9 +7,17 @@
     <fragment
         android:id="@+id/reposFragment"
         android:name="com.michs.github_repo_search.repos.ReposFragment"
-        android:label="ReposFragment" />
+        android:label="ReposFragment" >
+        <action
+            android:id="@+id/action_reposFragment_to_repoDetailsFragment"
+            app:destination="@id/repoDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/repoDetailsFragment"
         android:name="com.michs.github_repo_search.repoDetails.RepoDetailsFragment"
-        android:label="RepoDetailsFragment" />
+        android:label="RepoDetailsFragment" >
+        <argument
+            android:name="fullName"
+            app:argType="string" />
+    </fragment>
 </navigation>

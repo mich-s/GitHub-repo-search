@@ -1,0 +1,12 @@
+package com.michs.github_repo_search.repoDetails
+
+import androidx.lifecycle.ViewModel
+import com.michs.github_repo_search.repository.GitHubReposRepository
+import javax.inject.Inject
+
+class RepoDetailsViewModel @Inject constructor(
+    private val repository: GitHubReposRepository, val fullName: String): ViewModel(){
+
+
+
+}
