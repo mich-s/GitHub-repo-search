@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.michs.github_repo_search.App
-import com.michs.github_repo_search.databinding.FragmentReposBinding
+import com.michs.github_repo_search.databinding.FragmentRepoDetailBinding
 import com.michs.github_repo_search.repository.GitHubReposRepository
 import timber.log.Timber
 import javax.inject.Inject
@@ -33,11 +33,12 @@ class RepoDetailsFragment: Fragment(){
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding = FragmentReposBinding.inflate(inflater, container, false)
+        val binding = FragmentRepoDetailBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
 
         repoFullName = viewModel.fullName
         Timber.d("repofullName: $repoFullName")
+
 
         return binding.root
     }
