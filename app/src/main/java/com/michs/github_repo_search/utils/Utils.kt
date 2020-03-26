@@ -10,6 +10,8 @@ import androidx.lifecycle.MutableLiveData
 import com.bumptech.glide.Glide
 import com.michs.github_repo_search.network.Result
 import com.michs.github_repo_search.network.ResultsResponse
+import java.text.SimpleDateFormat
+import java.util.*
 
 fun hideSoftKeyboard(context: Context?, view: View?){
     val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -57,4 +59,10 @@ fun String.smartTruncate(length: Int): String {
         builder.append("...")
     }
     return builder.toString()
+}
+
+fun String.formatDate(): String{
+    val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ENGLISH)
+    val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
+    return formatter.format(parser.parse(this)!!)
 }

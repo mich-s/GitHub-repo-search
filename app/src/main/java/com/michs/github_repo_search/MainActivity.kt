@@ -12,6 +12,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.michs.github_repo_search.databinding.ActivityMainBinding
 import com.michs.github_repo_search.repository.GitHubReposRepository
 import com.michs.github_repo_search.utils.hideSoftKeyboard
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 //    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private var textUpdatedJob: Job? = null
+    lateinit var collapsingToolbarLayout: CollapsingToolbarLayout
 
     private val listener = NavController.OnDestinationChangedListener {
             navController, _, _ ->
@@ -41,6 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         toolbar = binding.toolbar
+        collapsingToolbarLayout = binding.collapsingToolbar
         setSupportActionBar(toolbar)
 
         navController = findNavController(R.id.nav_host_fragment)

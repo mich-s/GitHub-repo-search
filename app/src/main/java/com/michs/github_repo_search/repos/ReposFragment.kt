@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.michs.github_repo_search.App
+import com.michs.github_repo_search.MainActivity
 import com.michs.github_repo_search.databinding.FragmentReposBinding
 import com.michs.github_repo_search.network.Result
 import com.michs.github_repo_search.network.dto.asDomainModel
@@ -45,6 +46,7 @@ class ReposFragment: Fragment(){
             val direction = ReposFragmentDirections.actionReposFragmentToRepoDetailsFragment(it.fullName)
             findNavController().navigate(direction)
         })
+        (activity as MainActivity).collapsingToolbarLayout.title = "Search GitHub repositories"
 
 
         rv = binding.recyclerView

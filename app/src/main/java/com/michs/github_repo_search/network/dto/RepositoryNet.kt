@@ -36,7 +36,7 @@ fun List<RepositoryNet>.asDomainModel(): List<Repository> =
         )
     }
 
-/*fun RepositoryNet.asDomainObject(): Repository =
+fun RepositoryNet.asDomainObject(): Repository =
     Repository(
         name = name,
         fullName = fullName,
@@ -44,5 +44,9 @@ fun List<RepositoryNet>.asDomainModel(): List<Repository> =
         htmlUrl = htmlUrl,
         createdAt = createdAt,
         updatedAt = updatedAt,
-        language = language
-    )*/
+        language = language,
+        description = description,
+        stargazersCount = stargazersCount,
+        forksCount = forksCount,
+        watchersCount = watchersCount
+    )
