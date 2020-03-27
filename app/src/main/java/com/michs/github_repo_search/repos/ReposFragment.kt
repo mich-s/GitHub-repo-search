@@ -28,6 +28,7 @@ class ReposFragment: Fragment(){
     lateinit var repository: GitHubReposRepository
     private val viewModel: ReposViewModel by viewModels {ReposViewModelFactory(repository) }
     private lateinit var rv: RecyclerView
+    private lateinit var loadingLayout: View
 
     override fun onAttach(context: Context) {
         (activity!!.application as App).appComponent.inject(this)
@@ -48,7 +49,7 @@ class ReposFragment: Fragment(){
         })
         (activity as MainActivity).collapsingToolbarLayout.title = "Search GitHub repositories"
 
-
+        loadingLayout = binding.loadingLayout
         rv = binding.recyclerView
 
         rv.apply{
@@ -59,22 +60,23 @@ class ReposFragment: Fragment(){
         viewModel.repositories.observe(this, Observer { result ->
             when(result?.status){
                 Result.Status.SUCCESS -> {
-                    binding.noResults.isVisible = false
-//                    binding.loadingLayout.isVisible = false
+                    loadingLayout.isVisible = false
                     Timber.d(result.data.toString())
+                    binding.noResults.isVisible = result.data?.items.isNullOrEmpty()
                     result.data?.items?.let { adapter.submitList(it.asDomainModel()) }
                 }
                 Result.Status.ERROR -> {
-                    binding.noResults.isVisible = false
-//                    binding.loadingLayout.isVisible = false
+                    loadingLayout.isVisible = false
                     Timber.d(result.message)
-                    val areTooManyRequests = result.message!!.contains("403")
-                    if (areTooManyRequests)
-                        Toast.makeText(activity, "Too many requests", Toast.LENGTH_SHORT).show()
+                    binding.noResults.isVisible = result.data?.items.isNullOrEmpty()
+                    Toast.makeText(activity, "${result.message}", Toast.LENGTH_SHORT).show()
                 }
             }
         })
-
         return binding.root
+    }
+
+    fun showLoadingLayout(){
+        loadingLayout.isVisible = true
     }
 }

@@ -3,13 +3,15 @@ package com.michs.github_repo_search.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
-import com.michs.github_repo_search.domain.Repository
 import com.michs.github_repo_search.network.RemoteDataSource
 import com.michs.github_repo_search.network.Result
 import com.michs.github_repo_search.network.ResultsResponse
 import com.michs.github_repo_search.network.dto.RepositoryNet
 import com.michs.github_repo_search.utils.notifyObserver
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
 

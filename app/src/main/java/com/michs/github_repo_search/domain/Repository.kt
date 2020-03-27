@@ -10,6 +10,5 @@ data class Repository(
     val language: String?,
     val description: String?,
     val stargazersCount: Int?,
-    val forksCount: Int?,
-    val watchersCount: Int?
+    val forksCount: Int?
 )

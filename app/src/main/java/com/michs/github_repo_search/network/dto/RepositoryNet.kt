@@ -15,8 +15,7 @@ data class RepositoryNet(
     val language: String?,
     val description: String?,
     @Json(name = "stargazers_count") val stargazersCount: Int,
-    @Json(name = "forks_count") val forksCount: Int,
-    @Json(name = "watchers_count") val watchersCount: Int
+    @Json(name = "forks_count") val forksCount: Int
 )
 
 fun List<RepositoryNet>.asDomainModel(): List<Repository> =
@@ -31,8 +30,7 @@ fun List<RepositoryNet>.asDomainModel(): List<Repository> =
             language = it.language,
             description = it.description,
             stargazersCount = it.stargazersCount,
-            forksCount = it.forksCount,
-            watchersCount = it.watchersCount
+            forksCount = it.forksCount
         )
     }
 
@@ -47,6 +45,5 @@ fun RepositoryNet.asDomainObject(): Repository =
         language = language,
         description = description,
         stargazersCount = stargazersCount,
-        forksCount = forksCount,
-        watchersCount = watchersCount
+        forksCount = forksCount
     )

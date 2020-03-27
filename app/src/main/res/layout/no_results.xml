@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <TextView
         android:id="@+id/tv_loading_label"
         android:layout_width="wrap_content"
@@ -16,23 +15,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="No results"
-        android:layout_marginBottom="5dp"
-        />
-    <!--<ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="80dp"
-        android:indeterminateTint="@android:color/darker_gray"
-        />-->
+        android:layout_marginBottom="5dp" />
     <View
         android:id="@+id/bg_loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorAccent"
         android:alpha="0.2"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
